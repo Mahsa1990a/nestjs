@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class ProductsService {
-  products: ProductModel[] = [];
+  private products: ProductModel[] = [];
 
   addProduct(title: string, desc: string, price: number) {
 
@@ -12,5 +12,10 @@ export class ProductsService {
     this.products.push(newProduct);
 
     return prodId;
+  };
+
+  getAllProducts() {
+    //pulling out all elements of arr and add them as new element into this array
+    return [...this.products];
   }
 }
