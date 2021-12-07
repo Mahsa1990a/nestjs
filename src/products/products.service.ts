@@ -49,6 +49,14 @@ export class ProductsService {
 
   }
 
+  deleteProduct(id: string) {
+    // const product = this.findProduct(productId)[0]; 
+    // const index = this.findProduct(productId)[1];  OR:
+    const [product, index] = this.findProduct(id);
+    this.products.splice(index, 1); // splice(index, how many to remove)
+  }
+
+  // For getProduct and updateProduct to not have duplication:
   private findProduct(id: string): [ProductModel, number] {
     const productIndex = this.products.findIndex(product => product.id === id);
     const product = this.products[productIndex];
